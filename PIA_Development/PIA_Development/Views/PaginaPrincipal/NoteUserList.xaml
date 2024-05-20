@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:models="clr-namespace:PIA_Development.Model" xmlns:viewmodels="clr-namespace:PIA_Development.ViewModels" x:DataType="viewmodels:NoteListViewModel"
+             x:Class="PIA_Development.Views.PaginaPrincipal.NoteUserList">
+    <ContentPage.Content>
+        <StackLayout Margin="10,0,10,0">
+            <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="True" />
+
+            <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}" >
+                <CollectionView ItemsSource="{Binding Note}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:NoteModel">
+                            <StackLayout Margin="10,5,10,0">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Email: " />
+                                    <Label Text="{Binding EmailField}" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Nota: " />
+                                    <Label Text="{Binding Note}" TextDecorations="Underline"/>
+                                </StackLayout>
+                                <BoxView HeightRequest="1" Color="Gray" />
+
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:NoteListViewModel}},Path=SelectedNoteCommand}" CommandParameter="{Binding .}" />
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

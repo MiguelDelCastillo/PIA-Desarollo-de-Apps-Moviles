@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:PIA_Development.ViewModels"
+             x:DataType="viewmodels:AddOrUpdateNoteViewModel"
+             x:Class="PIA_Development.Views.PaginaPrincipal.AddOrUpdateNote"
+Background="#F6F0ED">
+
+    <ContentPage.Content>
+
+        <StackLayout VerticalOptions="Center" >
+
+            <StackLayout HorizontalOptions="Center">
+                <Label Padding="10" Text="Creador de la Nota:" TextColor="#0b0500"/>
+                <Entry HeightRequest="50"
+                    
+                    BackgroundColor="#F6F0ED"
+                    Text="{Binding NoteDetail.EmailField}"
+                    Placeholder="Escibre tu correo aqui:"
+                       VerticalTextAlignment="Start"
+                       IsTextPredictionEnabled="True"
+                       x:Name="datosUsuario"
+                       />
+            </StackLayout>
+            <!--IsReadOnly="True" IsEnabled="False"-->
+            <StackLayout Margin="0,0,0,200">
+                <Frame CornerRadius="20" HasShadow= "True" BackgroundColor="#790960"
+                      >
+                    <Entry HeightRequest="200"
+                           WidthRequest="380"
+                    BackgroundColor="#790960"
+                    Placeholder="Aqui puedes empezar a escribir tu nota:" 
+                       Text="{Binding NoteDetail.Note}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="FillAndExpand"
+                       VerticalTextAlignment="Start"
+                       IsTextPredictionEnabled="True"/>
+
+                </Frame>
+            </StackLayout>
+            <StackLayout>
+                <Button WidthRequest="200" HeightRequest="50"
+                        HorizontalOptions="Center" VerticalOptions="Center" 
+                    Text="Save Details" CornerRadius="20" BackgroundColor="#072AC8" 
+                        TextColor="AntiqueWhite" Command="{Binding SaveNoteCommand}" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

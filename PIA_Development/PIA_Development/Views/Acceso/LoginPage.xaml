@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PIA_Development.Views.Acceso.LoginPage"
+             BackgroundColor="White"
+             >
+
+    <StackLayout VerticalOptions="Center">
+        
+        <StackLayout Margin =" 50,0,50,0" >
+            <StackLayout Grid.Row="1">
+                <Image
+                    Source="https://cdn-icons-png.freepik.com/256/7856/7856126.png?semt=ais_hybrid"
+                    HeightRequest="{OnPlatform iOS=90,Android=70}"
+                    WidthRequest="{OnPlatform iOS=90,Android=0}"
+                    />
+            </StackLayout>
+            <StackLayout Grid.Row="2" HorizontalOptions="Center" Orientation="Vertical" Margin="0,0,0,10">
+                <Label
+                         Text="Bienvenido a BoxNote"
+                         FontAttributes="Bold"
+                         HorizontalOptions="Center"
+                         FontSize="26"
+                         Margin="0,0,0,5"
+                         WidthRequest="300"
+                         TextColor="{OnPlatform Android=Black}"
+                         />
+                <Label Text="Inicia Sesion">
+                    
+                </Label>
+            </StackLayout>
+            <Frame HasShadow="True" BorderColor="Bisque" CornerRadius="20">
+                <StackLayout>
+                    <Entry Placeholder="Usuario" 
+                           x:Name="TxtUsuario"
+                           Keyboard="Email"
+                           MaxLength="50"
+                           Text="{Binding TxtUsuario}" 
+                           TextColor="Black"/>
+                    <Entry Placeholder="Password" 
+                           x:Name="TxtPassword"
+                           MaxLength="50"
+                           Text="{Binding TxtPassword}" 
+                           TextColor="Black" 
+                           IsPassword="True"></Entry>
+                </StackLayout>
+            </Frame>
+            <StackLayout Grid.Row="6" HorizontalOptions="Center" Orientation="Vertical" >
+                <Button
+                     Text="Iniciar Sesion"
+                            TextColor="Black"
+                            Font="Montserrat-Medium.otf"
+                            FontSize="{OnPlatform Android=15}"
+                            BackgroundColor="#fcfcfc"
+                            BorderColor="#f2f2f2"
+                            BorderWidth="1.5"
+                            WidthRequest="300"
+                            HeightRequest="50"
+                            Command="{Binding LoginCommand}"
+                            IsEnabled="{Binding IsEnabledTxt}" 
+                    />
+                <Button
+                            Text="No tienes una cuenta? Registrate!"
+                            TextColor="{OnPlatform iOS=Black}"
+                            FontSize="{OnPlatform Android=11,iOS=12}"
+                            BackgroundColor="White"
+                            IsEnabled="{Binding IsEnabledTxt}"
+                            Clicked="SignUp_Clicked"
+                            />
+
+            </StackLayout>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

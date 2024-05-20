@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PIA_Development.Views.MenuPrincipal"
+             Title="Menu Principal"
+             BackgroundColor="Lavender">
+
+
+    <Grid RowDefinitions="250,130,40,*">
+        <Frame Margin="10,30,15,30"
+               CornerRadius="15">
+            <Frame.Background>
+                <LinearGradientBrush EndPoint="1,0">
+                    <GradientStop Color="#020024" Offset="0.1"></GradientStop>
+                    <GradientStop Color="#790960" Offset="0.2"></GradientStop>
+                    <GradientStop Color="Pink" Offset="0.3"></GradientStop>
+                </LinearGradientBrush>
+            </Frame.Background>
+            
+            <StackLayout>
+                
+                <Label Text="Bienvenido Usuario:"
+                       FontAttributes="Bold"
+                       FontSize="25"
+                       HorizontalOptions="Center"
+                       TextColor="Pink"></Label>
+                
+                <CollectionView x:Name="datosUsuario" SelectionChanged="datosUsuario_SelectionChanged">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="10">
+                                <!-- Aquí defines cómo se mostrará cada elemento en el CollectionView -->
+                                <Label Text="{Binding}" HorizontalOptions="Center" FontSize="23" x:Name="correo"
+                                       TextColor="#ffc9f3"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </Frame>
+        <Label x:Name="RandomText"></Label>
+        <Frame Grid.Row="1" CornerRadius="20" Margin="15,15,15,0" Padding="10">
+
+            <Grid ColumnDefinitions="*,*" VerticalOptions="Center">
+                <StackLayout>
+                    <Frame Padding="0" BackgroundColor="Transparent"
+                           CornerRadius="10" HorizontalOptions="Center">
+
+                        <Image HeightRequest="75" WidthRequest="75"
+                            Source="https://cdn.icon-icons.com/icons2/3251/PNG/512/note_add_regular_icon_203437.png">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="addNote" Tapped="addNote_Tapped"></TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+
+                        </Image>
+
+                    </Frame>
+                    <Label Text="Agregar Nota" HorizontalOptions="Center" TextColor="Black" FontSize="12" FontAttributes="Bold"/>
+                </StackLayout>
+                <StackLayout Grid.Column ="1">
+                    <Frame Padding="0" BackgroundColor="Transparent"
+                           CornerRadius="10" HorizontalOptions="Center">
+                        <Image
+                    HeightRequest="75" WidthRequest="75"
+                            Source="https://cdn-icons-png.flaticon.com/512/1/1755.png">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer x:Name="showNote" Tapped="showNote_Clicked"></TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Frame>
+                    <Label Text="Ver Nota" HorizontalOptions="Center" TextColor="Black" FontSize="12" FontAttributes="Bold"/>
+                </StackLayout>
+            </Grid>
+
+        </Frame>
+
+
+
+    </Grid>
+</ContentPage>
